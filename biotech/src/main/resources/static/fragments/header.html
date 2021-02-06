@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/static/style.css">
+    <title>Inventory</title>
+</head>
+
+<body>
+<div th:fragment="header">
+    <div class="topBar">
+        <p class="left">
+            <a href="inventory"> inventory</a>
+        </p>
+        <!--        <p class="right">-->
+        <!--            <a href="/more-filters"> more >></a>-->
+        <!--        </p>-->
+    </div>
+    <div class="wrap">
+        <nav>
+            <ul>
+                <li><a href="/inventory">View all</a></li>
+                <!--             TODO multi level navbar, for quick search-->
+                <!--            cell line >> alias-->
+                <li><a href="/inventory">Select by cell line</a></li>
+                <li><a href="/inventory">Select by alias</a></li>
+                <li><a href="/inventory">With puromycin</a></li>
+
+                <li><a href="/inventory">Transfected cells</a></li>
+                <!--           transfected>> cell line -->
+
+                <li><a href="/inventory">Advanced search</a></li>
+                <!--            all in, seperated search site w al the possibilities-->
+            </ul>
+        </nav>
+    </div>
+</div>
+</body>
+</html>

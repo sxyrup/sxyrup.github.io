@@ -8,34 +8,10 @@
           rel="stylesheet">
 </head>
 <body>
-<header>
-    <div class="topBar">
-        <p class="left">
-            <a href="inventory"> inventory</a>
-        </p>
-        <!--        <p class="right">-->
-        <!--            <a href="/more-filters"> more >></a>-->
-        <!--        </p>-->
-    </div>
-    <div class="wrap">
-        <ul>
-            <li><a href="/inventory">View all</a></li>
-            <!--             TODO multi level navbar, for quick search-->
-            <!--            cell line >> alias-->
-            <li><a href="/inventory">Select by cell line</a></li>
-            <li><a href="/inventory">Select by alias</a></li>
-            <li><a href="/inventory">With puromycin</a></li>
+<div class="header"> <div th:replace="../static/fragments/header :: header"></div> </div>
 
-            <li><a href="/inventory">Transfected cells</a></li>
-            <!--           transfected>> cell line -->
-
-            <li><a href="/inventory">Advanced search</a></li>
-            <!--            all in, seperated search site w al the possibilities-->
-        </ul>
-    </div>
-</header>
 <main>
-    <form action="#"
+    <form class="table" action="#"
           id="add"
           th:action="@{/inventory}"
           th:object="${cell}"
@@ -93,7 +69,7 @@
                            th:field="*{p1}"
                            placeholder="n/sum"
                            required
-                    />
+                    />/
                     <input class="numberInput" form="add"
                            type="number"
                            name="passageNumber2"

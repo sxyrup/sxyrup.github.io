@@ -29,8 +29,6 @@ public class InventoryController {
   public String submitNewVial(Model model, @ModelAttribute(name = "cell") Vial vial) {
     model.addAttribute("inventory", stock);
     vial.initId();
-    vial.setPassageNumber();
-    vial.setLocation();
     stock.add(vial);
     return "inventory";
   }

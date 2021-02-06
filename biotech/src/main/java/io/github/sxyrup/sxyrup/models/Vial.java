@@ -13,7 +13,7 @@ public class Vial implements Serializable {
   private CellType type;
   private String cellLine; //TODO ENUM or List w iteration
   private String alias;
-  private List<Integer> passageNumber = new ArrayList<>();
+//  private List<Integer> passageNumber = new ArrayList<>();
   private boolean expressingGFP;
   private boolean clonal;
   private String clonalNote;
@@ -23,7 +23,7 @@ public class Vial implements Serializable {
   private boolean puro;
   private LocalDate frozenDate;
   private LocalDate thawedDate;
-  private List<Integer> location = new ArrayList<>();
+//  private List<Integer> location = new ArrayList<>(); //setp1 & setp2 method could fill !!!
   private String note;
 
   private int p1;
@@ -55,25 +55,12 @@ public class Vial implements Serializable {
     this.id = nextId++;
   }
 
-  public void setPassageNumber() {
-    this.passageNumber.add(p1);
-    this.passageNumber.add(p2);
-  }
-
-  public void setLocation() {
-    this.passageNumber.add(tank);
-    this.passageNumber.add(canister);
-    this.passageNumber.add(cane);
-  }
-
-
   @Override
   public String toString() {
     return "Vial{" +
         "type=" + type +
         ", cellLine='" + cellLine + '\'' +
         ", alias='" + alias + '\'' +
-        ", passageNumber=" + passageNumber +
         ", expressingGFP=" + expressingGFP +
         ", clonal=" + clonal +
         ", clonalNote='" + clonalNote + '\'' +
@@ -82,7 +69,6 @@ public class Vial implements Serializable {
         ", puro=" + puro +
         ", frozenDate=" + frozenDate +
         ", thawedDate=" + thawedDate +
-        ", location=" + location +
         ", note='" + note + '\'' +
         '}';
   }
@@ -147,11 +133,6 @@ public class Vial implements Serializable {
   public void setAlias(String alias) {
     this.alias = alias;
   }
-
-  public List<Integer> getPassageNumber() {
-    return passageNumber;
-  }
-
 
   public boolean isExpressingGFP() {
     return expressingGFP;
@@ -231,14 +212,6 @@ public class Vial implements Serializable {
 
   public void setThawedDate(int dd, int mm, int yyyy) {
     this.thawedDate = LocalDate.of(dd, mm, yyyy);
-  }
-
-  public List<Integer> getLocation() {
-    return location;
-  }
-
-  public void setLocation(List<Integer> location) {
-    this.location = location;
   }
 
   public String getNote() {
