@@ -11,7 +11,7 @@
 <header>
     <div class="topBar">
         <p class="left">
-            <a href="/inventory"> inventory</a>
+            <a href="inventory"> inventory</a>
         </p>
         <!--        <p class="right">-->
         <!--            <a href="/more-filters"> more >></a>-->
@@ -44,6 +44,7 @@
         <table class="block">
             <tr>
                 <td>#id</td>
+                <td> Cell Type</td>
                 <td> Cell Line</td>
                 <td> Alias</td>
                 <td> Passage</td>
@@ -57,17 +58,21 @@
                     <button class="submitTableButton" type="submit">Add vial</button>
                 </td>
                 <td>
-
-                    <input form="add"
-                           type="text"
-                           name="cellLine"
-                           id="cellLine"
-                           th:field="*{cellLine}"
-                           placeholder="Cell Line"
-                           required
-                    />
-
+                    <select th:field="*{type}" name="cellType" id="cellType" required>
+                        <option value="HESC">hESC</option>
+                        <option value="HIPSC">hiPSC</option>
+                        <option value="CM">CM</option>
+                    </select>
                 </td>
+
+                <td>
+                    <select th:field="*{cellLine}" name="cellLine" id="cellLine" required>
+                        <option value="HuES9">HuES9</option>
+                        <option value="XCL1">XCL1</option>
+                        <option value="IMR90-4">IMR90-4</option>
+                        <option value="DiGeorge iPS">DiGeorge iPS</option>
+                        <option value="Schizo iPS">Schizo iPS</option>
+                    </select>
                 <td>
 
                     <input form="add"
@@ -115,7 +120,6 @@
                            name="note"
                            id="note"
                            th:field="*{note}"
-                           x
                            placeholder="Notes..."
                 /></td>
 
@@ -160,6 +164,8 @@
             <tr th:each="cell : ${inventory}">
 
                 <td th:text="${cell.id}"></td>
+
+                <td th:text="${cell.type}"></td>
 
                 <td th:text="${cell.cellLine}"></td>
 

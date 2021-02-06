@@ -1,16 +1,17 @@
 package io.github.sxyrup.sxyrup.models;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
 import java.util.List;
 
-public class Vial extends Cell {
-  private static int nextId = 0;
+public class Vial implements Serializable {
+  private static int nextId = 1;
 
   private CellType type;
-  private String cellLine;
+  private String cellLine; //TODO ENUM or List w iteration
   private String alias;
   private List<Integer> passageNumber = new ArrayList<>();
   private boolean expressingGFP;

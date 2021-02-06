@@ -22,17 +22,17 @@ public class InventoryController {
     Vial vial = new Vial();
     model.addAttribute("inventory", stock);
     model.addAttribute("cell", vial);
-    return "newinventory";
+    return "inventory";
   }
 
   @PostMapping("/inventory")
-  public String addVial(Model model, @ModelAttribute(name = "cell") Vial vial) {
+  public String submitNewVial(Model model, @ModelAttribute(name = "cell") Vial vial) {
     model.addAttribute("inventory", stock);
     vial.initId();
     vial.setPassageNumber();
     vial.setLocation();
     stock.add(vial);
-    return "newinventory";
+    return "inventory";
   }
 
 
