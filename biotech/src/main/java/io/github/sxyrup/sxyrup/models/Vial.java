@@ -13,7 +13,7 @@ public class Vial implements Serializable {
   private CellType type;
   private String cellLine; //TODO ENUM or List w iteration
   private String alias;
-//  private List<Integer> passageNumber = new ArrayList<>();
+  //  private List<Integer> passageNumber = new ArrayList<>();
   private boolean expressingGFP;
   private boolean clonal;
   private String clonalNote;
@@ -23,7 +23,7 @@ public class Vial implements Serializable {
   private boolean puro;
   private LocalDate frozenDate;
   private LocalDate thawedDate;
-//  private List<Integer> location = new ArrayList<>(); //setp1 & setp2 method could fill !!!
+  //  private List<Integer> location = new ArrayList<>(); //setp1 & setp2 method could fill !!!
   private String note;
 
   private int p1;
