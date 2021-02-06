@@ -1,0 +1,265 @@
+body {
+    background-color: lightgray;
+    color: #333333;
+    font-family: courier;
+    font-size: 8pt;
+    max-width: max-content;
+    margin: 0 auto 0;
+}
+
+@media screen and (max-width: 2900px) {
+    body {
+        background-image: linear-gradient(to bottom right, #ffb6c1, #314fba)
+    }
+}
+
+@media screen and (max-width: 2700px) {
+    body {
+        background-image: linear-gradient(to bottom right, #314fba, #ef0044)
+    }
+}
+
+@media screen and (max-width: 2500px) {
+    body {
+        background-image: linear-gradient(to bottom right, #ff8c00, #558e11)
+    }
+}
+
+@media screen and (max-width: 2300px) {
+    body {
+        background-image: linear-gradient(to bottom right, #3cb371, #c14196)
+    }
+}
+
+@media screen and (max-width: 2100px) {
+    body {
+        background-image: linear-gradient(to bottom right, #808080, #6341c1)
+    }
+}
+
+@media screen and (max-width: 1900px) {
+    body {
+        background-image: linear-gradient(to bottom right, #800080, #009dff)
+    }
+}
+
+@media screen and (max-width: 1700px) {
+    body {
+        background-image: linear-gradient(to bottom right, #656500, #50ffcb)
+    }
+}
+
+@media screen and (max-width: 1500px) {
+    body {
+        background-image: linear-gradient(to bottom right, #deb887, #3b59ad)
+    }
+}
+
+@media screen and (max-width: 1300px) {
+    body {
+        background-image: linear-gradient(to bottom right, #0040ff, #cdacad)
+    }
+}
+
+@media screen and (max-width: 1100px) {
+    body {
+        background-image: linear-gradient(to bottom right, #191970, #e55000)
+    }
+}
+
+@media screen and (max-width: 900px) {
+    body {
+        background-image: linear-gradient(to bottom right, #800080, #1adb03)
+    }
+}
+
+@media screen and (max-width: 800px) {
+    body {
+        background-image: linear-gradient(to bottom right, #00ff7f, #dc143c)
+    }
+}
+
+@media screen and (max-width: 600px) {
+    body {
+        background-image: linear-gradient(to bottom right, #ff69b4, #ffca00)
+    }
+}
+
+
+.topBar a {
+    text-decoration: none;
+    color: #555;
+    opacity: 0.7;
+    font-size: 400%;
+    font-weight: 900;
+    font-family: 'Coda Caption', sans-serif;
+    text-transform: uppercase;
+    text-align: left;
+    margin-top: 0;
+    margin-bottom: 0;
+    padding: 20px 0 20px 20px;
+}
+
+.topBar a:hover {
+    color: #444;
+    opacity: 0.7;
+}
+
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+    padding-right: 10px;
+}
+
+.wrap {
+    clear: both;
+}
+
+.singleLine, table {
+    height: 100%;
+    background-color: white;
+    opacity: 0.4;
+    font-size: 120%;
+}
+
+.singleLine {
+    padding: 20px 0 100% 20px;
+    font-weight: bold;
+    font-size: large;
+    text-transform: uppercase;
+}
+
+table.block {
+    width: 100%;
+    padding: 20px 100px 100% 100px;
+}
+
+
+th, td {
+    padding: 10px;
+    border-bottom: 1px solid black;
+}
+
+thead {
+    font-size: 110%;
+    height: auto;
+    padding: 20pt 0 10pt 0;
+    border-bottom: 4px solid black;
+}
+
+.tdName, .tdDescription, .tdQuantity, .tdPrice {
+    max-width: 100px;
+    vertical-align: top;
+}
+
+.tdName {
+    font-weight: bold;
+    font-size: large;
+    text-transform: uppercase;
+}
+
+.tdQuantity {
+    text-align: center;
+}
+
+.tdPrice {
+    text-align: right;
+}
+
+header {
+    height: max-content;
+    margin-bottom: -13px;
+    background-image: linear-gradient(to right, yellow, pink);
+    opacity: 0.6;
+}
+
+ul {
+    text-transform: uppercase;
+    font-size: small;
+    font-weight: bold;
+    list-style-type: none;
+    /*height: 100%;*/
+    padding: 0;
+    overflow: hidden;
+    background-color: #333;
+    opacity: 1;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: inline-block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: #111;
+}
+
+input {
+    font-size: smaller;
+    padding: 5pt;
+    max-width: 100px;
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+}
+
+.numberInput {
+    width: 20px;
+    padding: 0;
+}
+
+
+button {
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    background-color: #333;
+    border-radius: 20px;
+    padding: 15px 20px;
+    text-align: center;
+    color: white;
+    border: none;
+    cursor: pointer;
+    transition: 0.4s;
+    position: relative;
+    /*animation-name: ohlala;*/
+    /*animation-duration: 4s;*/
+    /*animation-iteration-count: 30;*/
+    /*animation-direction: alternate-reverse;*/
+}
+
+.submitTableButton {
+    font-size: x-small;
+    box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.2), 0 6px 12px 0 rgba(0, 0, 0, 0.19);
+    border-radius: 10px;
+    padding: 10px 15px;
+}
+
+.textField {
+    width: available;
+}
+
+@keyframes ohlala {
+    0% {
+        left: 0;
+    }
+    30% {
+        left: 300px;
+    }
+    50% {
+        left: 0;
+    }
+    70% {
+        left: 50%;
+    }
+    100% {
+        left: 0;
+    }
+}

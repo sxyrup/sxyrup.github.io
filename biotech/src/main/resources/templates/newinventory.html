@@ -1,0 +1,191 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Coda+Caption:wght@800&family=Ubuntu:wght@700&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+<header>
+    <div class="topBar">
+        <p class="left">
+            <a href="/inventory"> inventory</a>
+        </p>
+        <!--        <p class="right">-->
+        <!--            <a href="/more-filters"> more >></a>-->
+        <!--        </p>-->
+    </div>
+    <div class="wrap">
+        <ul>
+            <li><a href="/inventory">View all</a></li>
+            <!--             TODO multi level navbar, for quick search-->
+            <!--            cell line >> alias-->
+            <li><a href="/inventory">Select by cell line</a></li>
+            <li><a href="/inventory">Select by alias</a></li>
+            <li><a href="/inventory">With puromycin</a></li>
+
+            <li><a href="/inventory">Transfected cells</a></li>
+            <!--           transfected>> cell line -->
+
+            <li><a href="/inventory">Advanced search</a></li>
+            <!--            all in, seperated search site w al the possibilities-->
+        </ul>
+    </div>
+</header>
+<main>
+    <form action="#"
+          id="add"
+          th:action="@{/inventory}"
+          th:object="${cell}"
+          method="post">
+
+        <table class="block">
+            <tr>
+                <td>#id</td>
+                <td> Cell Line</td>
+                <td> Alias</td>
+                <td> Passage</td>
+                <td> Puro</td>
+                <td> Note</td>
+                <td> In stock</td>
+                <td> Location</td>
+            </tr>
+            <tr>
+                <td>
+                    <button class="submitTableButton" type="submit">Add vial</button>
+                </td>
+                <td>
+
+                    <input form="add"
+                           type="text"
+                           name="cellLine"
+                           id="cellLine"
+                           th:field="*{cellLine}"
+                           placeholder="Cell Line"
+                           required
+                    />
+
+                </td>
+                <td>
+
+                    <input form="add"
+                           type="text"
+                           name="alias"
+                           id="alias"
+                           th:field="*{alias}"
+                           placeholder="Alias"
+                    />
+
+                </td>
+                <td>
+                    <input class="numberInput" form="add"
+                           type="number"
+                           name="passageNumber"
+                           id="passageNumber"
+                           min="1"
+                           th:field="*{p1}"
+                           placeholder="n/sum"
+                           required
+                    />
+                    <input class="numberInput" form="add"
+                           type="number"
+                           name="passageNumber2"
+                           id="passageNumber2"
+                           min="1"
+                           placeholder="n/sum"
+                           th:field="*{p2}"
+                           required
+                    />
+
+                </td>
+                <td><input form="add"
+                           type="checkbox"
+                           name="puro"
+                           id="puro"
+                           value="true"
+                           th:checked="*{puro}"
+                           th:value="true"
+                /></td>
+
+                <td><input class="textField"
+                           form="add"
+                           type="text"
+                           name="note"
+                           id="note"
+                           th:field="*{note}"
+                           x
+                           placeholder="Notes..."
+                /></td>
+
+                <td>DATE COMES HERE</td>
+                <td>
+                    <input class="numberInput" form="add"
+                           type="number"
+                           name="tank"
+                           id="tank"
+                           min="1"
+                           max="7"
+                           size="2"
+                           placeholder="tank"
+                           th:field="*{tank}"
+                           required
+                    />
+                    <input class="numberInput" form="add"
+                           type="number"
+                           name="canister"
+                           id="canister"
+                           min="1"
+                           max="6"
+                           size="2"
+                           placeholder="n/sum"
+                           th:field="*{canister}"
+                           required
+                    />
+                    <input class="numberInput" form="add"
+                           type="number"
+                           name="cane"
+                           id="cane"
+                           min="1"
+                           max="20"
+                           size="2"
+                           placeholder="n/sum"
+                           th:field="*{cane}"
+                           required
+                    />
+                </td>
+            </tr>
+
+            <tr th:each="cell : ${inventory}">
+
+                <td th:text="${cell.id}"></td>
+
+                <td th:text="${cell.cellLine}"></td>
+
+                <td th:text="${cell.alias}"></td>
+
+                <td th:text="${cell.p2==0 ? '' : cell.p1 + '/' + cell.p2}"></td>
+
+                <td th:text="${cell.puro? 'PURO' : ''}"></td>
+
+
+                <td th:text="${cell.note}"></td>
+
+
+                <span th:switch="${cell.isPresent}">
+                                    <td th:case="true">
+
+                                        <button class="submitTableButton" type="submit">Thaw vial</button> </td>
+
+                                    <td th:case="false" th:text="'DATE COMES HERE'"></td>
+                                </span>
+
+                <td th:text="${cell.tank} + '/' + ${cell.canister} + '/' + ${cell.cane}"></td>
+            </tr>
+
+        </table>
+    </form>
+</main>
+</body>
+</html>
