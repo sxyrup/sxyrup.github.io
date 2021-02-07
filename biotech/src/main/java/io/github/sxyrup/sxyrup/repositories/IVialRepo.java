@@ -5,7 +5,7 @@ import java.io.IOException;
 import java.util.List;
 import java.util.Optional;
 
-public interface ICellRepo {
+public interface IVialRepo {
 
 
   public List<Vial> list();

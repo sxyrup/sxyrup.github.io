@@ -21,7 +21,7 @@ import org.springframework.stereotype.Repository;
 
 @Repository
 @Primary
-public class JSONCellRepo extends AbstractFileRepo implements ICellRepo {
+public class JSONVialRepo extends AbstractFileRepo implements IVialRepo {
   public static final Gson GSON = new Gson();
   public static final String DB_PATH = "src/main/resources/db/db.json";
 
@@ -40,19 +40,19 @@ public class JSONCellRepo extends AbstractFileRepo implements ICellRepo {
   @Override
   public void add(Vial vial) throws IOException {
     Objects.requireNonNull(vial);
-    database.put(vial.getUID(), vial);
+    database.put(vial.getUVID(), vial);
     persist();
-    database.put(vial.getUID(), vial);
+    database.put(vial.getUVID(), vial);
     persist();
   }
 
   @Override
   public Vial update(Vial vial) throws IOException {
     Objects.requireNonNull(vial);
-    if (!database.containsKey(vial.getUID())) {
+    if (!database.containsKey(vial.getUVID())) {
       throw new UnsupportedOperationException("No such vial!");
     }
-    Vial prev = database.put(vial.getUID(), vial);
+    Vial prev = database.put(vial.getUVID(), vial);
     persist();
     return prev;
   }

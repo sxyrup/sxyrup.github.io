@@ -6,11 +6,11 @@ import java.util.List;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public class CellRepo {
+public class VialRepo {
   private List<Vial> stock;
 
 
-  public CellRepo() {
+  public VialRepo() {
     stock = new ArrayList<>();
     initStock();
   }
@@ -37,7 +37,7 @@ public class CellRepo {
     stock.add(new Vial("Hues9", "wt", 2, 13, false, 3, 3, 4,
         "NOTE GOES HERE"));
 
-    stock.get(0).setPresent(false);
+    stock.get(0).setVialIsPresent(false);
   }
 
 }

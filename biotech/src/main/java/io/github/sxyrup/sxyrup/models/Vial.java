@@ -2,84 +2,104 @@ package io.github.sxyrup.sxyrup.models;
 
 import java.io.Serializable;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.UUID;
 
 public class Vial implements Serializable { //todo save to json
-  private static int nextId = 1;
+  private CellType cellType;
+  private String cellLine; //TODO ENUM!!
+  private String cellAlias;
+  private String cellNote;
+  private boolean cellIsTransgenic;
+  private boolean cellHasGFP;
+  private boolean cellHasResistance;
+  private boolean cellIsClonal;
+  private boolean cellExpressingGFP;
 
-  private CellType type;
-  private String cellLine; //TODO ENUM?
-  private String alias;
-  private List<Integer> passageNumber = new ArrayList<>();
-  //init : from form; thaw: set(0, 1) set(1, vial.p1 + vial.p2)
-  private boolean expressingGFP;
-  private boolean clonal;
-  private String clonalNote;
-  //TODO add cell
-  private int id;
-  private String UID;
-  private boolean isPresent = true;
-  private boolean puro;
+  private String UVID;
+  private String UCID;
+
+
+  private boolean vialIsPresent = true;
+  private boolean puroInMedia;
   private LocalDate frozenDate; //TODO handle LocalDate in Thymeleaf form
   private LocalDate thawedDate;
-  private String note;
+  private String vialNote;
 
   private int p1;
   private int p2;
 
-  private int tank; //TODO container class?
+  private int tank;
   private int canister;
   private int cane;
 
-  public String getUID() {
-    return UID;
-  }
-
   public Vial() {
-    this.UID = UUID.randomUUID().toString();
+    this.UVID = UUID.randomUUID().toString();
   }
 
-
-  public Vial(String cellLine, String alias, int p1, int p2, boolean puro, int tank, int canister,
-              int cane, String note) {
-    initId();
+  public Vial(String cellLine, String cellAlias, int p1, int p2, boolean puroInMedia, int tank, int canister,
+              int cane, String vialNote) {
     this.cellLine = cellLine;
-    this.alias = alias;
+    this.cellAlias = cellAlias;
     this.p1 = p1;
     this.p2 = p2;
-    this.puro = puro;
+    this.puroInMedia = puroInMedia;
     this.tank = tank;
     this.canister = canister;
     this.cane = cane;
-    this.note = note;
+    this.vialNote = vialNote;
   }
 
-  public void initId() {
-    this.id = nextId++;
+
+  public String getUVID() {
+    return UVID;
   }
 
-  @Override
-  public String toString() {
-    return "Vial{" +
-        "type=" + type +
-        ", cellLine='" + cellLine + '\'' +
-        ", alias='" + alias + '\'' +
-        ", expressingGFP=" + expressingGFP +
-        ", clonal=" + clonal +
-        ", clonalNote='" + clonalNote + '\'' +
-        ", id=" + id +
-        ", isPresent=" + isPresent +
-        ", puro=" + puro +
-        ", frozenDate=" + frozenDate +
-        ", thawedDate=" + thawedDate +
-        ", note='" + note + '\'' +
-        '}';
+  public String getUCID() {
+    return UCID;
   }
 
-  public void setPuro(boolean puro) {
-    this.puro = puro;
+  public boolean isCellIsTransgenic() {
+    return cellIsTransgenic;
+  }
+
+  public void setCellIsTransgenic(boolean cellIsTransgenic) {
+    this.cellIsTransgenic = cellIsTransgenic;
+  }
+
+  public boolean isCellHasGFP() {
+    return cellHasGFP;
+  }
+
+  public void setCellHasGFP(boolean cellHasGFP) {
+    this.cellHasGFP = cellHasGFP;
+  }
+
+  public boolean isCellHasResistance() {
+    return cellHasResistance;
+  }
+
+  public void setCellHasResistance(boolean cellHasResistance) {
+    this.cellHasResistance = cellHasResistance;
+  }
+
+  public void setP1(int p1) {
+    this.p1 = p1;
+  }
+
+  public void setP2(int p2) {
+    this.p2 = p2;
+  }
+
+  public void setUCID(String UCID) {
+    this.UCID = UCID;
+  }
+
+  public void setUVID(String UVID) {
+    this.UVID = UVID;
+  }
+
+  public void setPuroInMedia(boolean puroInMedia) {
+    this.puroInMedia = puroInMedia;
   }
 
 
@@ -107,20 +127,12 @@ public class Vial implements Serializable { //todo save to json
     this.cane = cane;
   }
 
-  public static int getNextId() {
-    return nextId;
+  public CellType getCellType() {
+    return cellType;
   }
 
-  public static void setNextId(int nextId) {
-    Vial.nextId = nextId;
-  }
-
-  public CellType getType() {
-    return type;
-  }
-
-  public void setType(CellType type) {
-    this.type = type;
+  public void setCellType(CellType cellType) {
+    this.cellType = cellType;
   }
 
   public String getCellLine() {
@@ -131,56 +143,48 @@ public class Vial implements Serializable { //todo save to json
     this.cellLine = cellLine;
   }
 
-  public String getAlias() {
-    return alias;
+  public String getCellAlias() {
+    return cellAlias;
   }
 
-  public void setAlias(String alias) {
-    this.alias = alias;
+  public void setCellAlias(String cellAlias) {
+    this.cellAlias = cellAlias;
   }
 
-  public boolean isExpressingGFP() {
-    return expressingGFP;
+  public boolean isCellExpressingGFP() {
+    return cellExpressingGFP;
   }
 
-  public void setExpressingGFP(boolean expressingGFP) {
-    this.expressingGFP = expressingGFP;
+  public void setCellExpressingGFP(boolean cellExpressingGFP) {
+    this.cellExpressingGFP = cellExpressingGFP;
   }
 
-  public boolean isClonal() {
-    return clonal;
+  public boolean isCellIsClonal() {
+    return cellIsClonal;
   }
 
-  public void setClonal(boolean clonal) {
-    this.clonal = clonal;
+  public void setCellIsClonal(boolean cellIsClonal) {
+    this.cellIsClonal = cellIsClonal;
   }
 
-  public String getClonalNote() {
-    return clonalNote;
+  public String getCellNote() {
+    return cellNote;
   }
 
-  public void setClonalNote(String clonalNote) {
-    this.clonalNote = clonalNote;
+  public void setCellNote(String cellNote) {
+    this.cellNote = cellNote;
   }
 
-  public int getId() {
-    return id;
+  public boolean isVialIsPresent() {
+    return vialIsPresent;
   }
 
-  public void setId(int id) {
-    this.id = id;
+  public void setVialIsPresent(boolean vialIsPresent) {
+    this.vialIsPresent = vialIsPresent;
   }
 
-  public boolean isPresent() {
-    return isPresent;
-  }
-
-  public void setPresent(boolean present) {
-    isPresent = present;
-  }
-
-  public boolean isPuro() {
-    return puro;
+  public boolean isPuroInMedia() {
+    return puroInMedia;
   }
 
   public Integer getP1() {
@@ -200,16 +204,16 @@ public class Vial implements Serializable { //todo save to json
   }
 
   public void setPuro() {
-    this.puro = true;
+    this.puroInMedia = true;
   }
 
 
-  public String getNote() {
-    return note;
+  public String getVialNote() {
+    return vialNote;
   }
 
-  public void setNote(String note) {
-    this.note = note;
+  public void setVialNote(String vialNote) {
+    this.vialNote = vialNote;
   }
 
 

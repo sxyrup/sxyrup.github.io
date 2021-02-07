@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 
-public class ObjectStreamCellRepo extends AbstractFileRepo implements ICellRepo {
+public class ObjectStreamVialRepo extends AbstractFileRepo implements IVialRepo {
   public static final String DB_PATH = "src/main/resources/db/db.ser";
 
   private ArrayList<Vial> database = new ArrayList<>();
@@ -25,7 +25,7 @@ public class ObjectStreamCellRepo extends AbstractFileRepo implements ICellRepo 
 
   @Override
   public Optional<Vial> get(String UID) {
-    return database.stream().filter(item -> item.getUID().equals(UID)).findFirst();
+    return database.stream().filter(item -> item.getUVID().equals(UID)).findFirst();
   }
 
   @Override
@@ -39,7 +39,7 @@ public class ObjectStreamCellRepo extends AbstractFileRepo implements ICellRepo 
   @Override
   public Vial update(Vial vial) throws IOException {
     Objects.requireNonNull(vial);
-    Optional<Vial> vialOptional = get(vial.getUID());
+    Optional<Vial> vialOptional = get(vial.getUVID());
     if (!vialOptional.isPresent()) {
       throw new UnsupportedOperationException("No such vial!");
     }

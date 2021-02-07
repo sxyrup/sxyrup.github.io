@@ -36,7 +36,7 @@
                     <button class="submitTableButton" type="submit">Add vial</button>
                 </td>
                 <td>
-                    <select th:field="*{type}" name="cellType" id="cellType" required>
+                    <select th:field="*{cellType}" name="cellType" id="cellType" required>
                         <option value="HESC">hESC</option>
                         <option value="HIPSC">hiPSC</option>
                         <option value="CM">CM</option>
@@ -57,7 +57,7 @@
                            type="text"
                            name="alias"
                            id="alias"
-                           th:field="*{alias}"
+                           th:field="*{cellAlias}"
                            placeholder="Alias"
                     />
 
@@ -88,7 +88,7 @@
                            name="puro"
                            id="puro"
                            value="true"
-                           th:checked="*{puro}"
+                           th:checked="*{puroInMedia}"
                            th:value="true"
                 /></td>
 
@@ -97,7 +97,7 @@
                            type="text"
                            name="note"
                            id="note"
-                           th:field="*{note}"
+                           th:field="*{vialNote}"
                            placeholder="Notes..."
                 /></td>
 
@@ -141,23 +141,23 @@
 
             <tr th:each="cell : ${inventory}">
 
-                <td th:text="${cell.UID}"></td>
+                <td th:text="${cell.UVID}"></td>
 
-                <td th:text="${cell.type}"></td>
+                <td th:text="${cell.cellType}"></td>
 
                 <td th:text="${cell.cellLine}"></td>
 
-                <td th:text="${cell.alias}"></td>
+                <td th:text="${cell.cellAlias}"></td>
 
                 <td th:text="${cell.p2==0 ? '' : cell.p1 + '/' + cell.p2}"></td>
 
-                <td th:text="${cell.puro? 'PURO' : ''}"></td>
+                <td th:text="${cell.puroInMedia? 'PURO' : ''}"></td>
 
 
-                <td th:text="${cell.note}"></td>
+                <td th:text="${cell.vialNote}"></td>
 
 
-                <span th:switch="${cell.isPresent}">
+                <span th:switch="${cell.vialIsPresent}">
                                     <td th:case="true">
 
                                         <button class="submitTableButton" type="submit">Thaw vial</button> </td>

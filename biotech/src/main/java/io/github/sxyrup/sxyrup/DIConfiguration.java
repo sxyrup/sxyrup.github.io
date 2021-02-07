@@ -1,14 +1,13 @@
 package io.github.sxyrup.sxyrup;
 
-import io.github.sxyrup.sxyrup.repositories.AbstractFileRepo;
-import io.github.sxyrup.sxyrup.repositories.ICellRepo;
-import io.github.sxyrup.sxyrup.repositories.JSONCellRepo;
+import io.github.sxyrup.sxyrup.repositories.IVialRepo;
+import io.github.sxyrup.sxyrup.repositories.JSONVialRepo;
 import java.io.IOException;
 
 public class DIConfiguration {
 
-  public ICellRepo buildRecipeRepo () throws IOException {
-    JSONCellRepo repo = new JSONCellRepo();
+  public IVialRepo buildRecipeRepo () throws IOException {
+    JSONVialRepo repo = new JSONVialRepo();
     repo.init();
     return repo;
   }
