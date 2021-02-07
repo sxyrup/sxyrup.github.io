@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 @Qualifier("entityService")
-public class EntityService {
+public class CellService {
   EntityRepo entityRepo;
 
-  public EntityService(@Qualifier("EntityRepo") EntityRepo entityRepo) {
+  public CellService(@Qualifier("EntityRepo") EntityRepo entityRepo) {
     initRepo(entityRepo);
     this.entityRepo = entityRepo;
   }

@@ -23,5 +23,4 @@ public class EntityRepo {
     cells.add(cell);
   }
 
-
 }

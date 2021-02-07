@@ -2,7 +2,7 @@ package io.github.sxyrup.sxyrup.controllers;
 
 import io.github.sxyrup.sxyrup.models.Cell;
 import io.github.sxyrup.sxyrup.models.Vial;
-import io.github.sxyrup.sxyrup.services.EntityService;
+import io.github.sxyrup.sxyrup.services.CellService;
 import io.github.sxyrup.sxyrup.services.InventoryService;
 import java.io.IOException;
 import org.springframework.beans.factory.annotation.Qualifier;
@@ -16,12 +16,12 @@ import org.springframework.web.bind.annotation.PostMapping;
 public class InventoryController {
 
   InventoryService inventoryService;
-  EntityService entityService;
+  CellService cellService;
 
-  public InventoryController(  @Qualifier("inventoryService") InventoryService inventoryService, @Qualifier("entityService")
-                             EntityService entityService) {
+  public InventoryController(  @Qualifier("inventoryService") InventoryService inventoryService, @Qualifier("cellService")
+      CellService cellService) {
     this.inventoryService = inventoryService;
-    this.entityService = entityService;
+    this.cellService = cellService;
   }
 
   @GetMapping("/inventory")
@@ -45,7 +45,7 @@ public class InventoryController {
   @GetMapping("/entities")
   public String showEntities(Model model) {
     Cell cell = new Cell();
-    model.addAttribute("entities", entityService.getAllCells());
+    model.addAttribute("entities", cellService.getAllCells());
     model.addAttribute("cell", cell);
     return "entity";
   }
@@ -53,8 +53,8 @@ public class InventoryController {
   @PostMapping("/entities")
   public String submitNewVial(Model model, @ModelAttribute(name = "cell") Cell cell)
       throws IOException {
-    model.addAttribute("entities", entityService.getAllCells());
-    entityService.addCell(cell);
+    model.addAttribute("entities", cellService.getAllCells());
+    cellService.addCell(cell);
     return "entity";
   }
 
