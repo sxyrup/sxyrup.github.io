@@ -14,7 +14,7 @@ public interface IVialRepo {
   Optional<Vial> get(String UID);
 
 
-  public void add(Vial vial) throws IOException;
+  public void add(Vial entity) throws IOException;
 
   public Vial update(Vial vial) throws IOException;
 

@@ -3,12 +3,13 @@ package io.github.sxyrup.sxyrup.repositories;
 import io.github.sxyrup.sxyrup.models.Vial;
 import java.util.ArrayList;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Repository;
 
 @Repository
+@Qualifier("InventoryRepo")
 public class VialRepo {
   private List<Vial> stock;
-
 
   public VialRepo() {
     stock = new ArrayList<>();

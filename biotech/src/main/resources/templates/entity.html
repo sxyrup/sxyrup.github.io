@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="/style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Coda+Caption:wght@800&family=Ubuntu:wght@700&display=swap"
+          rel="stylesheet">
+</head>
+<body>
+<div class="header">
+    <div th:replace="../static/fragments/header :: header"></div>
+</div>
+
+<main>
+    <table class="block">
+        <tr>
+            <td>type</td>
+            <td>line</td>
+            <td>alias</td>
+            <td>note</td>
+        </tr>
+
+        <tr th:each="cell : ${entities}">
+
+            <td th:text="${cell.type}"></td>
+            <td th:text="${cell.line}"></td>
+            <td th:text="${cell.alias}"></td>
+            <td th:text="${cell.note}"></td>
+
+        </tr>
+    </table>
+    </form>
+</main>
+</body>
+</html>

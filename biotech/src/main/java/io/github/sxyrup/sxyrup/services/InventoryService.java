@@ -3,31 +3,32 @@ package io.github.sxyrup.sxyrup.services;
 import io.github.sxyrup.sxyrup.DIConfiguration;
 import io.github.sxyrup.sxyrup.models.Vial;
 import io.github.sxyrup.sxyrup.repositories.IVialRepo;
+import io.github.sxyrup.sxyrup.repositories.VialRepo;
 import java.io.IOException;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 @Service
-public class VialInventoryService {
+@Qualifier("inventoryService")
+public class InventoryService {
+  IVialRepo vialRepo;
 
-
-  IVialRepo cellRepo;
-
-  public VialInventoryService() {
+  public InventoryService(@Qualifier("InventoryRepo")VialRepo vialRepo) {
     try {
       DIConfiguration diConfiguration = new DIConfiguration();
-      this.cellRepo = diConfiguration.buildRecipeRepo();
+      this.vialRepo = diConfiguration.buildRecipeRepo();
     } catch (IOException e) {
       e.printStackTrace();
     }
   }
 
   public List<Vial> getAllVials() {
-    return cellRepo.list();
+    return vialRepo.list();
   }
 
   public void addVial(Vial vial) throws IOException {
-    cellRepo.add(vial);
+    vialRepo.add(vial);
   }
 
 }

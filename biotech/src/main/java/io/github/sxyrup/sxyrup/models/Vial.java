@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.UUID;
 
-public class Vial implements Serializable { //todo save to json
+public class Vial implements Serializable {
   private CellType cellType;
   private String cellLine; //TODO ENUM!!
   private String cellAlias;
