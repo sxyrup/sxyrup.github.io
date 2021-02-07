@@ -2,6 +2,7 @@ package io.github.sxyrup.sxyrup.controllers;
 
 import io.github.sxyrup.sxyrup.models.Vial;
 import io.github.sxyrup.sxyrup.services.InventoryService;
+import java.io.IOException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,10 +25,11 @@ public class InventoryController {
   }
 
   @PostMapping("/inventory")
-  public String submitNewVial(Model model, @ModelAttribute(name = "cell") Vial vial) {
+  public String submitNewVial(Model model, @ModelAttribute(name = "cell") Vial vial)
+      throws IOException {
     model.addAttribute("inventory", inventoryService.getAllVials());
-    vial.initId();
-    inventoryService.addVial(vial);
+        inventoryService.addVial(vial);
+    System.out.println(vial);
     return "inventory";
   }
 

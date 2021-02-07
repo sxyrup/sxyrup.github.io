@@ -1,6 +1,8 @@
 package io.github.sxyrup.sxyrup.models;
 
-public enum CellType {
+import java.io.Serializable;
+
+public enum CellType implements Serializable {
   HESC("hESC"),
   HIPSC("hiPSC"),
   CM("CM");

@@ -3,39 +3,44 @@ package io.github.sxyrup.sxyrup.models;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Date;
 import java.util.List;
+import java.util.UUID;
 
-public class Vial implements Serializable {
+public class Vial implements Serializable { //todo save to json
   private static int nextId = 1;
 
   private CellType type;
-  private String cellLine; //TODO ENUM or List w iteration
+  private String cellLine; //TODO ENUM?
   private String alias;
-  //  private List<Integer> passageNumber = new ArrayList<>();
+  private List<Integer> passageNumber = new ArrayList<>();
+  //init : from form; thaw: set(0, 1) set(1, vial.p1 + vial.p2)
   private boolean expressingGFP;
   private boolean clonal;
   private String clonalNote;
-  //first part is the cell
+  //TODO add cell
   private int id;
+  private String UID;
   private boolean isPresent = true;
   private boolean puro;
-  private LocalDate frozenDate;
+  private LocalDate frozenDate; //TODO handle LocalDate in Thymeleaf form
   private LocalDate thawedDate;
-  //  private List<Integer> location = new ArrayList<>(); //setp1 & setp2 method could fill !!!
   private String note;
 
   private int p1;
   private int p2;
 
-  private int tank;
+  private int tank; //TODO container class?
   private int canister;
   private int cane;
 
+  public String getUID() {
+    return UID;
+  }
 
   public Vial() {
+    this.UID = UUID.randomUUID().toString();
   }
+
 
   public Vial(String cellLine, String alias, int p1, int p2, boolean puro, int tank, int canister,
               int cane, String note) {
@@ -198,21 +203,6 @@ public class Vial implements Serializable {
     this.puro = true;
   }
 
-  public LocalDate getFrozenDate() {
-    return frozenDate;
-  }
-
-  public void setFrozenDate(LocalDate frozenDate) {
-    this.frozenDate = frozenDate;
-  }
-
-  public LocalDate getThawedDate() {
-    return thawedDate;
-  }
-
-  public void setThawedDate(int dd, int mm, int yyyy) {
-    this.thawedDate = LocalDate.of(dd, mm, yyyy);
-  }
 
   public String getNote() {
     return note;

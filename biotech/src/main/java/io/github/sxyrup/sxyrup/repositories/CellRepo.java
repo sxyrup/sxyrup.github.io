@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 public class CellRepo {
   private List<Vial> stock;
 
+
   public CellRepo() {
     stock = new ArrayList<>();
     initStock();
@@ -38,6 +39,5 @@ public class CellRepo {
 
     stock.get(0).setPresent(false);
   }
-
 
 }
