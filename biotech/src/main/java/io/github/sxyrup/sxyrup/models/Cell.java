@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.UUID;
 
 public class Cell implements Serializable {
+  private String originUCID; //if cloning etc happens
   private String UCID; //OK, ONE PER ENTITY
   private CellType type;
   private String line; //TODO ENUM!
@@ -14,10 +15,10 @@ public class Cell implements Serializable {
   private List<String> vialsFromCell = new ArrayList<>();  //for FREEZE method
   private String note;
 
-  private boolean transgenic;
-  private boolean hasGFP;
-  private boolean hasResistance;
-  private boolean clonal;
+  private boolean transgenic = false;
+  private boolean hasGFP = false;
+  private boolean hasResistance = false;
+  private boolean clonal = false;
 
   int p1, p2;
 
@@ -46,6 +47,7 @@ public class Cell implements Serializable {
     this.hasResistance = vial.isCellHasResistance();
     this.clonal = vial.isCellIsClonal();
   }
+
   public int getP1() {
     return passageNumber.get(0);
   }
@@ -61,7 +63,6 @@ public class Cell implements Serializable {
   public void setP2(int p2) {
     passageNumber.set(1, p2);
   }
-
 
 
   public String getUCID() {
@@ -114,6 +115,27 @@ public class Cell implements Serializable {
 
   public String getNote() {
     return note;
+  }
+
+  @Override
+  public String toString() {
+    return "Cell{" +
+        "originUCID='" + originUCID + '\'' +
+        ", UCID='" + UCID + '\'' +
+        ", type=" + type +
+        ", line='" + line + '\'' +
+        ", alias='" + alias + '\'' +
+        ", passageNumber=" + passageNumber +
+        ", vialsFromCell=" + vialsFromCell +
+        ", note='" + note + '\'' +
+        ", transgenic=" + transgenic +
+        ", hasGFP=" + hasGFP +
+        ", hasResistance=" + hasResistance +
+        ", clonal=" + clonal +
+        ", p1=" + p1 +
+        ", p2=" + p2 +
+        ", vial=" + vial +
+        '}';
   }
 
   public void setNote(String note) {

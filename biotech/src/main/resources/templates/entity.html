@@ -13,23 +13,41 @@
 </div>
 
 <main>
-    <table class="block">
-        <tr>
-            <td>type</td>
-            <td>line</td>
-            <td>alias</td>
-            <td>note</td>
-        </tr>
+    <form class="table" action="#"
+          id="add"
+          th:action="@{/inventory}"
+          th:object="${cell}"
+          method="post">
 
-        <tr th:each="cell : ${entities}">
+        <table class="block">
+            <tr>
+                <td>type</td>
+                <td>line</td>
+                <td>alias</td>
+                <!--<td>Passage number</td>-->
+                <td>Transgene</td>
+                <td>Clonality</td>
+                <td>Notes</td>
+            </tr>
 
-            <td th:text="${cell.type}"></td>
-            <td th:text="${cell.line}"></td>
-            <td th:text="${cell.alias}"></td>
-            <td th:text="${cell.note}"></td>
+            <tr th:each="cell : ${entities}">
 
-        </tr>
-    </table>
+                <td th:text="${cell.type}"></td>
+                <td th:text="${cell.line}"></td>
+                <td th:text="${cell.alias}"></td>
+                <!--<td th:text="${cell.p1} + '/' + ${cell.p2}"></td>-->
+                <td>
+                    <!--</td>-->
+                    <div th:text="${cell.hasGFP}? 'GFP' : ''"></div>
+                    <div th:text="${cell.hasResistance}? 'Resistance gene' : ''"></div>
+                    <!--<td >-->
+                </td>
+                <td th:text=" ${cell.isClonal()?
+                'Single cell clone' : 'Batch'}"></td>
+                <td th:text="${cell.note}"></td>
+
+            </tr>
+        </table>
     </form>
 </main>
 </body>

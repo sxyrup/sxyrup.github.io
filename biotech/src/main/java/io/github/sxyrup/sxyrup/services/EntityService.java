@@ -32,6 +32,11 @@ public class EntityService {
     cell.setLine("HUES9");
     cell.setAlias("BELA");
     cell.setNote("DEMO NOTE");
+//    cell.setP1(12);
+//    cell.setP2(20);
+    cell.setHasGFP(true);
+    cell.setHasResistance(true);
+
     entityRepo.addEntity(cell);
   }
 }

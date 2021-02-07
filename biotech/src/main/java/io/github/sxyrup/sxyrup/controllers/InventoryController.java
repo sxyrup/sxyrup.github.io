@@ -1,5 +1,6 @@
 package io.github.sxyrup.sxyrup.controllers;
 
+import io.github.sxyrup.sxyrup.models.Cell;
 import io.github.sxyrup.sxyrup.models.Vial;
 import io.github.sxyrup.sxyrup.services.EntityService;
 import io.github.sxyrup.sxyrup.services.InventoryService;
@@ -40,11 +41,28 @@ public class InventoryController {
     return "inventory";
   }
 
-  @GetMapping("/inventory/entities")
-  public String listEntities(Model model) {
+
+  @GetMapping("/entities")
+  public String showEntities(Model model) {
+    Cell cell = new Cell();
     model.addAttribute("entities", entityService.getAllCells());
+    model.addAttribute("cell", cell);
     return "entity";
   }
+
+  @PostMapping("/entities")
+  public String submitNewVial(Model model, @ModelAttribute(name = "cell") Cell cell)
+      throws IOException {
+    model.addAttribute("entities", entityService.getAllCells());
+    entityService.addCell(cell);
+    return "entity";
+  }
+
+//  @GetMapping("/inventory/entities")
+//  public String listEntities(Model model) {
+//    model.addAttribute("entities", entityService.getAllCells());
+//    return "entity";
+//  }
 
 }
 
