@@ -11,6 +11,8 @@ public class Cell implements Serializable {
   private CellType type;
   private String line; //TODO ENUM!
   private String alias;
+  private int p1;
+  private int p2;
   private List<Integer> passageNumber = new ArrayList<>();
   private List<String> vialsFromCell = new ArrayList<>();  //for FREEZE method
   private String note;
@@ -19,8 +21,6 @@ public class Cell implements Serializable {
   private boolean hasGFP = false;
   private boolean hasResistance = false;
   private boolean clonal = false;
-
-  int p1, p2;
 
   private Vial vial;
 
@@ -49,19 +49,19 @@ public class Cell implements Serializable {
   }
 
   public int getP1() {
-    return passageNumber.get(0);
+    return p1;
   }
 
   public int getP2() {
-    return passageNumber.get(1);
+    return p2;
   }
 
   public void setP1(int p1) {
-    passageNumber.set(0, p1);
+    this.p1 = p1;
   }
 
   public void setP2(int p2) {
-    passageNumber.set(1, p2);
+    this.p2 = p2;
   }
 
 

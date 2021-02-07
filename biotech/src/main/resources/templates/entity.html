@@ -15,32 +15,127 @@
 <main>
     <form class="table" action="#"
           id="add"
-          th:action="@{/inventory}"
+          th:action="@{/entities}"
           th:object="${cell}"
           method="post">
 
         <table class="block">
+
             <tr>
+                <td></td>
                 <td>type</td>
                 <td>line</td>
                 <td>alias</td>
-                <!--<td>Passage number</td>-->
+                <td>Passage number</td>
                 <td>Transgene</td>
                 <td>Clonality</td>
                 <td>Notes</td>
             </tr>
+            <tr>
+                <td>
+                    <button class="submitTableButton" type="submit">Add Entity</button>
+                </td>
+                <td>
+                    <select th:field="*{type}" name="type" id="type" required>
+                        <option value="HESC">hESC</option>
+                        <option value="HIPSC">hiPSC</option>
+                    </select>
+                </td>
+
+                <td>
+                    <select th:field="*{line}" name="cellLine" id="cellLine" required>
+                        <option value="HuES9">HuES9</option>
+                        <option value="XCL1">XCL1</option>
+                        <option value="IMR90-4">IMR90-4</option>
+                        <option value="DiGeorge iPS">DiGeorge iPS</option>
+                        <option value="Schizo iPS">Schizo iPS</option>
+                    </select>
+                </td>
+                <td>
+                    <input form="add"
+                           type="text"
+                           name="alias"
+                           id="alias"
+                           th:field="*{alias}"
+                           placeholder="Alias"
+                    />
+                </td>
+
+                <td>
+                    <input class="numberInput" form="add"
+                           type="number"
+                           name="passageNumber"
+                           id="passageNumber"
+                           min="1"
+                           th:field="*{p1}"
+                           placeholder="n/sum"
+                           required
+                    />/
+                    <input class="numberInput" form="add"
+                           type="number"
+                           name="passageNumber2"
+                           id="passageNumber2"
+                           min="1"
+                           placeholder="n/sum"
+                           th:field="*{p2}"
+                           required
+                    />
+
+                </td>
+                <td>
+                    <input form="add"
+                           type="checkbox"
+                           name="GFP"
+                           id="GFP"
+                           value="true"
+                           th:checked="*{hasGFP}"
+                           th:value="true"
+                    />
+                    <label for="GFP"> GFP</label><br>
+                    <input form="add"
+                           type="checkbox"
+                           name="Resistance"
+                           id="Resistance"
+                           value="true"
+                           th:checked="*{hasResistance}"
+                           th:value="true"
+                    />
+                    <label for="Resistance"> Resistance gene</label>
+
+                </td>
+                <td>
+
+                    <input form="add"
+                           type="checkbox"
+                           name="Clonal"
+                           id="Clonal"
+                           value="true"
+                           th:checked="*{clonal}"
+                           th:value="true"
+                    /><label for="Clonal"> Single Cell Clone</label>
+                </td>
+                <td>
+                    <input class="textField"
+                           form="add"
+                           type="text"
+                           name="note"
+                           id="note"
+                           th:field="*{note}"
+                           placeholder="Notes..."
+                    />
+                </td>
+            </tr>
+
 
             <tr th:each="cell : ${entities}">
-
+                <td></td>
                 <td th:text="${cell.type}"></td>
                 <td th:text="${cell.line}"></td>
                 <td th:text="${cell.alias}"></td>
-                <!--<td th:text="${cell.p1} + '/' + ${cell.p2}"></td>-->
+                <td th:text="${cell.p1} + '/' + ${cell.p2}"></td>
                 <td>
-                    <!--</td>-->
-                    <div th:text="${cell.hasGFP}? 'GFP' : ''"></div>
-                    <div th:text="${cell.hasResistance}? 'Resistance gene' : ''"></div>
-                    <!--<td >-->
+                    <div th:if="${cell.hasGFP}" th:text="${cell.hasGFP}? 'GFP' : ''"></div>
+                    <div th:if="${cell.hasResistance}" th:text="${cell.hasResistance}? 'Resistance gene' : ''"></div>
                 </td>
                 <td th:text=" ${cell.isClonal()?
                 'Single cell clone' : 'Batch'}"></td>
